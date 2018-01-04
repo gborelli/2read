@@ -24,7 +24,7 @@ const TagContainer = props => (
       {
         Object.keys(props.tags).map(k => {
           const el = props.tags[k];
-          return <Tag key={el.item_id} text={el.tag} onClick={ () => {props.filterByTag(k)} }/>
+          return <Tag key={k} text={el.tag} onClick={ () => {props.filterByTag(k)} }/>
         })
       }
     </StyledContainer>

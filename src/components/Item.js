@@ -41,7 +41,7 @@ const Item = (props) => (
         <span>{props.time_read}</span>
         <ul>
           {
-            Object.values(props.authors).map(i => (
+            props.authors && Object.values(props.authors).map(i => (
               <li key={ i.author_id } >{
                 i.url ?
                   <Link href={i.url}>{i.name}</Link> :
