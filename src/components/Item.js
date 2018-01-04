@@ -11,12 +11,18 @@ import Link from './Link';
 const style = {
   card: {
     marginBottom: '1em',
-    width: '49%',
+    // width: '49%',
   },
   actions: {
     textAlign: 'right',
   }
 };
+
+
+// @media screen and (${config.mediumDevices}) {
+//   max-width: 60%;
+//   margin: 0 auto;
+// }
 
 const Image = styled.img`
   max-width: 150px;
@@ -26,7 +32,7 @@ const Image = styled.img`
 
 
 const Item = (props) => (
-  <Card style={style.card}>
+  <Card style={style.card} className="articleCard">
     <CardTitle
       title={props.given_title}
       subtitle={ props.tags && <Tags {...props} /> } />
