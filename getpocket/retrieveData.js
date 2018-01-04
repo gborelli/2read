@@ -12,8 +12,8 @@ const queryParams = {
   sort: 'newest',
   contentType: 'article',
   detailType: 'complete',
-  count: 3
 };
+
 
 pocket.get(queryParams, function(err, resp) {
   if (err) {

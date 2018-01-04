@@ -8,6 +8,7 @@
     "node-fetch": "^1.7.3",
     "node-getpocket": "^1.0.0",
     "object-hash": "^1.2.0",
+    "opn": "^5.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
@@ -21,6 +22,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "release": "node retrieveData.js && npm run build"
+    "release": "node getpocket/retrieveData.js && npm run build"
   }
 }
