@@ -1,0 +1,347 @@
+[
+  {
+    "item_id": "1511476494",
+    "resolved_id": "1511476494",
+    "given_url": "https://webflow.com/blog/18-web-design-trends-for-2017",
+    "given_title": "18 web design trends for 2017 | Webflow Blog",
+    "favorite": "0",
+    "status": "0",
+    "time_added": "1496075879",
+    "time_updated": "1514902982",
+    "time_read": "0",
+    "time_favorited": "0",
+    "sort_id": 0,
+    "resolved_title": "18 web design trends for 2017",
+    "resolved_url": "https://webflow.com/blog/18-web-design-trends-for-2017",
+    "excerpt": "The year 2016 — much like the last several years preceding it — featured an ongoing debate about web design either dying, or losing its soul.  Overdramatic as the web-design-is-dead argument may be, you can’t blame any creative for seeking innovative ways to present content to readers.",
+    "is_article": "1",
+    "is_index": "0",
+    "has_video": "0",
+    "has_image": "1",
+    "word_count": "1897",
+    "authors": {
+      "2568897": {
+        "item_id": "1511476494",
+        "author_id": "2568897",
+        "name": "New Yorker",
+        "url": ""
+      }
+    },
+    "image": {
+      "item_id": "1511476494",
+      "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/58503580e9fa30d013942e17_image22.png",
+      "width": "0",
+      "height": "0"
+    },
+    "images": {
+      "1": {
+        "item_id": "1511476494",
+        "image_id": "1",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/58503580e9fa30d013942e17_image22.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "2": {
+        "item_id": "1511476494",
+        "image_id": "2",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/5850359c15459c326438b852_image02.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "3": {
+        "item_id": "1511476494",
+        "image_id": "3",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/585035b01718544064c2aca7_image09.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "4": {
+        "item_id": "1511476494",
+        "image_id": "4",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/585035ba061935c113aed4c6_image17.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "5": {
+        "item_id": "1511476494",
+        "image_id": "5",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/585035cb15459c326438b854_image04.jpg",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "6": {
+        "item_id": "1511476494",
+        "image_id": "6",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/585035e7061935c113aed4c7_image13.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "7": {
+        "item_id": "1511476494",
+        "image_id": "7",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/5850360615459c326438b914_image15.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "8": {
+        "item_id": "1511476494",
+        "image_id": "8",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/5850361115459c326438b915_image11.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "9": {
+        "item_id": "1511476494",
+        "image_id": "9",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/58503624061935c113aed4c8_image07.jpg",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "10": {
+        "item_id": "1511476494",
+        "image_id": "10",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/58503645061935c113aed4c9_image08.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "11": {
+        "item_id": "1511476494",
+        "image_id": "11",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/58503662061935c113aed4d0_image01.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "12": {
+        "item_id": "1511476494",
+        "image_id": "12",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/585036841718544064c2acb5_image16.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "13": {
+        "item_id": "1511476494",
+        "image_id": "13",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/5850369a061935c113aed4d6_image20.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "14": {
+        "item_id": "1511476494",
+        "image_id": "14",
+        "src": "https://daks2k3a4ib2z.cloudfront.net/55fba7ade2ae0be15df2b309/585036ce15459c326438b9fa_image26.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      }
+    }
+  },
+  {
+    "item_id": "1693129864",
+    "resolved_id": "1693129864",
+    "given_url": "https://medium.com/dailyjs/javascript-basics-the-execution-context-and-the-lexical-environment-3505d4fe1be2",
+    "given_title": "JavaScript basics: The Execution Context and the Lexical Environment",
+    "favorite": "0",
+    "status": "0",
+    "time_added": "1491924850",
+    "time_updated": "1491924852",
+    "time_read": "0",
+    "time_favorited": "0",
+    "sort_id": 1,
+    "resolved_title": "JavaScript basics: The Execution Context and the Lexical Environment",
+    "resolved_url": "https://medium.com/dailyjs/javascript-basics-the-execution-context-and-the-lexical-environment-3505d4fe1be2",
+    "excerpt": "JavaScript is described as an interpreted language rather than a compiled language like C or Java. The distinction between an interpreted language and a compiled language might be a future blog post.",
+    "is_article": "1",
+    "is_index": "0",
+    "has_video": "0",
+    "has_image": "1",
+    "word_count": "1428",
+    "tags": {
+      "javascript": {
+        "item_id": "1693129864",
+        "tag": "javascript"
+      }
+    },
+    "authors": {
+      "66307640": {
+        "item_id": "1693129864",
+        "author_id": "66307640",
+        "name": "Dan Park",
+        "url": "https://medium.com/@danparkk"
+      }
+    },
+    "image": {
+      "item_id": "1693129864",
+      "src": "https://cdn-images-1.medium.com/max/1600/1*j7ZlJMPFM6Mc283Z748lKg.jpeg",
+      "width": "0",
+      "height": "0"
+    },
+    "images": {
+      "1": {
+        "item_id": "1693129864",
+        "image_id": "1",
+        "src": "https://cdn-images-1.medium.com/max/1600/1*j7ZlJMPFM6Mc283Z748lKg.jpeg",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "2": {
+        "item_id": "1693129864",
+        "image_id": "2",
+        "src": "https://cdn-images-1.medium.com/max/1600/1*4877k4Hq9dPdtmvg9hnGFA.jpeg",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "3": {
+        "item_id": "1693129864",
+        "image_id": "3",
+        "src": "https://cdn-images-1.medium.com/max/1600/1*ZrJKJqBsksWd-8uKM9OvgA.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      }
+    }
+  },
+  {
+    "item_id": "1693666338",
+    "resolved_id": "1693666338",
+    "given_url": "https://medium.com/dailyjs/npm-and-the-front-end-950c79fc22ce",
+    "given_title": "npm and the front end – DailyJS – Medium",
+    "favorite": "0",
+    "status": "0",
+    "time_added": "1491924841",
+    "time_updated": "1491924845",
+    "time_read": "0",
+    "time_favorited": "0",
+    "sort_id": 2,
+    "resolved_title": "npm and the front end",
+    "resolved_url": "https://medium.com/dailyjs/npm-and-the-front-end-950c79fc22ce",
+    "excerpt": "Working with npm on the front end comes with many issues. A summary of this can be found in this npm blog post. In the following article, I explore the way we use and reuse front end components (such as Sass partials) seamlessly through the npm registry.",
+    "is_article": "1",
+    "is_index": "0",
+    "has_video": "0",
+    "has_image": "1",
+    "word_count": "1598",
+    "tags": {
+      "javascript": {
+        "item_id": "1693666338",
+        "tag": "javascript"
+      }
+    },
+    "authors": {
+      "41683903": {
+        "item_id": "1693666338",
+        "author_id": "41683903",
+        "name": "Dominik Wilkowski",
+        "url": "https://medium.com/@wilkowskidom"
+      },
+      "62604778": {
+        "item_id": "1693666338",
+        "author_id": "62604778",
+        "name": "Learn",
+        "url": "https://medium.com/@Medium/personalize-your-medium-experience-with-users-publications-tags-26a41ab1ee0c#.hx4zuv3mg"
+      }
+    },
+    "image": {
+      "item_id": "1693666338",
+      "src": "https://cdn-images-1.medium.com/max/2000/1*PtzXcKRUsPhMDvFw2fKfrg.png",
+      "width": "0",
+      "height": "0"
+    },
+    "images": {
+      "1": {
+        "item_id": "1693666338",
+        "image_id": "1",
+        "src": "https://cdn-images-1.medium.com/max/2000/1*PtzXcKRUsPhMDvFw2fKfrg.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": ""
+      },
+      "2": {
+        "item_id": "1693666338",
+        "image_id": "2",
+        "src": "https://cdn-images-1.medium.com/max/1600/1*Oo8YNF2kAfFgLAFci1UofQ.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": "Npms perfect use case where all dependencies can be reused without conflicts"
+      },
+      "3": {
+        "item_id": "1693666338",
+        "image_id": "3",
+        "src": "https://cdn-images-1.medium.com/max/1600/1*nPJ7USFhgfDl_Dt1N5sBIA.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": "A more realistic view of how dependencies are managed via npm"
+      },
+      "4": {
+        "item_id": "1693666338",
+        "image_id": "4",
+        "src": "https://cdn-images-1.medium.com/max/1600/1*sH5l3TyG5XMAziO7kgdlRA.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": "The warning npm throws when a package with peer dependencies is installed"
+      },
+      "5": {
+        "item_id": "1693666338",
+        "image_id": "5",
+        "src": "https://cdn-images-1.medium.com/max/1600/1*PV0neRyyIKCtPQQdf8JOFQ.png",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": "This is what a conflict with Pancake looks like"
+      },
+      "6": {
+        "item_id": "1693666338",
+        "image_id": "6",
+        "src": "https://cdn-images-1.medium.com/max/1600/1*G5f6gDAmK1DscRYFg4mS7g.gif",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": "Pancake runs right inside the npm install command"
+      },
+      "7": {
+        "item_id": "1693666338",
+        "image_id": "7",
+        "src": "https://cdn-images-1.medium.com/max/1600/1*MTp69jZSL5fa0YHPHpVw5w.gif",
+        "width": "0",
+        "height": "0",
+        "credit": "",
+        "caption": "Installing a Pancake module will generate the import file for you"
+      }
+    }
+  }
+]
