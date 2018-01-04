@@ -20,7 +20,7 @@ pocket.get(queryParams, function(err, resp) {
     console.log('Oops; retrieve data failed: ' + err);
   } else {
     const file = './public/items.json'
-    const data = Object.values(resp.list);
+    const data = resp.list; // Object.values(resp.list);
     jsonfile.writeFile(file, data, { spaces: 2 }, function (err) {
       if (err) {
         console.log(err);
