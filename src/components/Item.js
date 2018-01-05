@@ -1,22 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import { withStyles } from 'material-ui/styles';
+import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
+import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
-import ChevronRightIcon from 'material-ui/svg-icons/navigation/chevron-right';
+import Typography from 'material-ui/Typography';
+import ChevronRight from 'material-ui-icons/ChevronRight';
 import Tags from './Tags';
 import Link from './Link';
 
 
-const style = {
-  card: {
-    marginBottom: '1em',
-    // width: '49%',
-  },
+const styles = theme => ({
   actions: {
-    textAlign: 'right',
-  }
-};
+    marginTop: theme.spacing.unit,
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+  },
+  cardMedia: {
+    height: '250px',
+  },
+});
 
 
 // @media screen and (${config.mediumDevices}) {
@@ -24,24 +28,39 @@ const style = {
 //   margin: 0 auto;
 // }
 
-const Image = styled.img`
-  max-width: 150px;
-  float: left;
-  margin-right: 3px;
+// const ImageWrapper = styled.div`
+
+//   width: 100%;
+//   overflow: hidden;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   img {
+//     width: 100%;
+//   }
+// `;
+
+const TitleLink = styled.a`
+  text-decoration: none;
+  color: inherit;
 `;
 
-
 const Item = (props) => (
-  <Card style={style.card} className="articleCard">
-    <CardTitle
-      title={props.given_title}
-      subtitle={ props.tags && <Tags {...props} /> } />
+  <Card className="articleCard">
+    <CardHeader
+      title={<TitleLink href={props.resolved_url}>{props.given_title}</TitleLink>}
+      subheader={ props.tags && <Tags {...props} /> } />
 
-    <CardText>
-      <div>
-        { props.has_image === '1' && <Image src={props.image.src} /> }
-        <Divider />
+    { props.has_image === '1' &&
+      <CardMedia
+        className={props.classes.cardMedia}
+        image={props.image.src} />
+    }
+    <CardContent>
+      <Typography component="div">
         <span>{props.excerpt}</span>{ ' ' }
+
+        <Divider />
         <span>{props.word_count}</span>{ ' ' }
         <span>{props.time_added}</span>{ ' ' }
         <span>{props.time_read}</span>
@@ -57,21 +76,23 @@ const Item = (props) => (
             ))
           }
         </ul>
+      </Typography>
 
-      </div>
-    </CardText>
+    </CardContent>
 
-    <CardActions style={style.actions}>
-      <FlatButton
-        label="Open"
-        labelPosition="before"
-        primary={true}
-        href={props.resolved_url}
-        icon={ <ChevronRightIcon /> } />
+    <CardActions className={props.classes.actions}>
+      <Button
+        raised
+        color="primary"
+        href={props.resolved_url}>Open
+        { <ChevronRight /> }
+      </Button>
     </CardActions>
 
   </Card>
 );
 
-export default Item;
+
+export default withStyles(styles)(Item);
+
 
