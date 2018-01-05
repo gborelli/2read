@@ -1,21 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card, CardActions, CardMedia, CardHeader, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
+import { withStyles } from 'material-ui/styles';
+import Card, { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
+import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
-import ChevronRightIcon from 'material-ui/svg-icons/navigation/chevron-right';
+import Typography from 'material-ui/Typography';
+import ChevronRight from 'material-ui-icons/ChevronRight';
 import Tags from './Tags';
 import Link from './Link';
 
 
-const style = {
-  card: {
-    marginBottom: '1em',
-  },
+const styles = theme => ({
   actions: {
-    textAlign: 'right',
-  }
-};
+    marginTop: theme.spacing.unit,
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+  },
+  cardMedia: {
+    height: '250px',
+  },
+});
 
 
 // @media screen and (${config.mediumDevices}) {
@@ -23,17 +28,17 @@ const style = {
 //   margin: 0 auto;
 // }
 
-const ImageWrapper = styled.div`
-  max-height: 250px;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  img {
-    width: 100%;
-  }
-`;
+// const ImageWrapper = styled.div`
+
+//   width: 100%;
+//   overflow: hidden;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   img {
+//     width: 100%;
+//   }
+// `;
 
 const TitleLink = styled.a`
   text-decoration: none;
@@ -41,21 +46,18 @@ const TitleLink = styled.a`
 `;
 
 const Item = (props) => (
-  <Card className="articleCard" style={style.card}>
+  <Card className="articleCard">
     <CardHeader
       title={<TitleLink href={props.resolved_url}>{props.given_title}</TitleLink>}
-      showExpandableButton={false}
-      subtitle={ props.tags && <Tags {...props} /> } />
+      subheader={ props.tags && <Tags {...props} /> } />
 
     { props.has_image === '1' &&
-      <CardMedia>
-        <ImageWrapper>
-          <img src={props.image.src} alt={props.given_title} />
-        </ImageWrapper>
-      </CardMedia>
+      <CardMedia
+        className={props.classes.cardMedia}
+        image={props.image.src} />
     }
-    <CardText>
-      <div>
+    <CardContent>
+      <Typography component="div">
         <span>{props.excerpt}</span>{ ' ' }
 
         <Divider />
@@ -74,21 +76,23 @@ const Item = (props) => (
             ))
           }
         </ul>
+      </Typography>
 
-      </div>
-    </CardText>
+    </CardContent>
 
-    <CardActions style={style.actions}>
-      <RaisedButton
-        label="Open"
-        labelPosition="before"
-        primary={true}
-        href={props.resolved_url}
-        icon={ <ChevronRightIcon /> } />
+    <CardActions className={props.classes.actions}>
+      <Button
+        raised
+        color="primary"
+        href={props.resolved_url}>Open
+        { <ChevronRight /> }
+      </Button>
     </CardActions>
 
   </Card>
 );
 
-export default Item;
+
+export default withStyles(styles)(Item);
+
 

@@ -1,26 +1,35 @@
 import config from '../config';
 
 import React from 'react';
+import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
 import Chip from 'material-ui/Chip';
 
-import styled from 'styled-components';
 
-
-const SearchBarWrapper = styled.div`
-  display: flex;
-  margin-bottom: ${config.defaultPadding};
-`;
+const styles = theme => ({
+  searchBar: {
+    display: 'flex',
+    marginBottom: config.defaultPadding,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  chip: {
+    margin: theme.spacing.unit / 2,
+  },
+});
 
 const SearchBar = (props) => (
-  <SearchBarWrapper>
-    {props.filters.map(i=>(
+  <Typography component="div" className={props.classes.searchBar}>
+    { (props.filters && props.filters.length) ? <strong>Filtered by </strong> : '' }
+    { props.filters.map(i=>(
       <Chip
+        className={props.classes.chip}
         key={i}
-        style={ {marginRight: '4px'} }
-        labelStyle={ {minWidth: '80px'} }
-        onRequestDelete={ (i) => {props.resetFilter(i)} }>{i}</Chip>
+        label={i}
+        onDelete={ (i) => {props.resetFilter(i)} } />
     ))}
-  </SearchBarWrapper>
+  </Typography>
 );
 
-export default SearchBar;
+export default withStyles(styles)(SearchBar);
+

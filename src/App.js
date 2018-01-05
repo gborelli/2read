@@ -1,35 +1,38 @@
 import 'whatwg-fetch';
+import 'typeface-roboto';
 
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import Reboot from 'material-ui/Reboot';
 import config from './config';
 
 import ItemsContainer from './components/ItemsContainer';
 import AppWrapper from './components/AppWrapper';
 import Header from './components/Header';
 import Main from './components/Main';
-import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
 
 
-const PAGE_SIZE = 6;
+let ALLITEMS = null;
 
 class App extends Component {
 
   constructor (props) {
     super(props);
     this.state = {
-      items: [],
-      allItems: null,
-      pageSize: PAGE_SIZE,
       filters: [],
       isLoading: true,
+
+      allItems: null,
+      items: [],
+
+      pageSize: 6,
+      pageStart: 0,
+
     };
     this.resetFilter = this.resetFilter.bind(this);
     this.filterByTag = this.filterByTag.bind(this);
-    this.loadMore = this.loadMore.bind(this);
+    this.getLoadedItems = this.getLoadedItems.bind(this);
 
   }
 
@@ -37,73 +40,80 @@ class App extends Component {
     window.addEventListener('scroll', () => {
       const docEl = document.documentElement;
       if ( (window.innerHeight + docEl.scrollTop) >= docEl.offsetHeight )  {
-        this.loadMore();
+        this.setState({
+          items: this.getLoadedItems(this.state.allItems),
+        });
       }
     });
 
-    if (! this.state.allItems) {
+    if (! ALLITEMS) {
       fetch('/items.json')
       .then(data => (
         data.json()
       ))
       .then(items => {
+        ALLITEMS = items;
         this.setState({
           isLoading: false,
           allItems: items,
+          items: this.getLoadedItems(items, 0),
         });
-        this.loadMore(0);
       });
     }
   }
 
-  loadMore(start) {
-
-    const currentSize = (typeof start !== 'undefined') ? start : this.state.pageSize;
-    const pageSize = currentSize + PAGE_SIZE;
-    let items = this.state.allItems || [];
-    // take a list of items from
-    // pagination start to pagination start + pagesize
-    items = items.slice(currentSize, pageSize );
-
-    this.setState({pageSize, items});
+  getLoadedItems(allItems, forcedStart) {
+    const { items, pageSize, pageStart } = this.state;
+    let start = (typeof forcedStart !== 'undefined') ? forcedStart : items.length;
+    // take a list of items from 0 to items.length + pagesize
+    return allItems.slice(pageStart, (start + pageSize) );
   }
 
   resetFilter () {
     this.setState({
-      items: this.loadMore(0),
+      allItems: ALLITEMS,
+      items: this.getLoadedItems(ALLITEMS, 0),
       filters: [],
     });
   }
 
   filterByTag (tag) {
-    const items = this.state.allItems.filter(i => (i.tags && i.tags[tag]));
-    this.setState({items, filters: [ tag, ]});
+    const allItems = ALLITEMS.filter(i => (i.tags && i.tags[tag]));
+    this.setState({
+      allItems,
+      filters: [ tag, ],
+      items: this.getLoadedItems(allItems, 0),
+    });
+
   }
 
   render() {
-    const { items } = this.state;
+    const { items, allItems, pageSize } = this.state;
 
     return (
-      <MuiThemeProvider>
-        <AppWrapper>
-          <Helmet>
-            <title>{config.title}</title>
-          </Helmet>
+      <div>
+        <Reboot />
+        <Helmet>
+          <title>{config.title}</title>
+        </Helmet>
 
-          <Header title={config.title} />
+        <Header
+          title={config.title}
+          itemsLength={allItems && allItems.length}
+          pageSize={pageSize} />
+
+        <AppWrapper>
           <Main>
             <SearchBar
               resetFilter={this.resetFilter} 
               filters={this.state.filters} />
-
             <ItemsContainer
               isLoading={this.state.isLoading}
               items={items}
               filterByTag={this.filterByTag} />
           </Main>
-          <Footer />
         </AppWrapper>
-      </MuiThemeProvider>
+      </div>
     );
   }
 }
