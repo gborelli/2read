@@ -51,21 +51,26 @@ class App extends Component {
           isLoading: false,
           allItems: items,
         });
-        this.loadMore();
+        this.loadMore(0);
       });
     }
   }
 
-  loadMore(start = 0) {
-    const currentSize = this.state.pageSize;
+  loadMore(start) {
+
+    const currentSize = (typeof start !== 'undefined') ? start : this.state.pageSize;
+    const pageSize = currentSize + PAGE_SIZE;
     let items = this.state.allItems || [];
-    items = items.slice(this.state.paginationStart, currentSize);
-    this.setState({pageSize: (currentSize + PAGE_SIZE), items});
+    // take a list of items from
+    // pagination start to pagination start + pagesize
+    items = items.slice(currentSize, pageSize );
+
+    this.setState({pageSize, items});
   }
 
   resetFilter () {
     this.setState({
-      items: this.loadMore(),
+      items: this.loadMore(0),
       filters: [],
     });
   }

@@ -1,13 +1,11 @@
 import React from 'react';
-import Divider from 'material-ui/Divider';
 import styled from 'styled-components';
 import Link from './Link';
 
-const StyledContainer = styled.div`
+const TagWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-
 
 export const Tag = props => (
   <Link
@@ -19,15 +17,14 @@ export const Tag = props => (
 
 const TagContainer = props => (
   <div>
-    <Divider />
-    <StyledContainer>
+    <TagWrapper>
       {
         Object.keys(props.tags).map(k => {
           const el = props.tags[k];
           return <Tag key={k} text={el.tag} onClick={ () => {props.filterByTag(k)} }/>
         })
       }
-    </StyledContainer>
+    </TagWrapper>
   </div>
 );
 

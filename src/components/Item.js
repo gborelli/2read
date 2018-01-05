@@ -11,7 +11,6 @@ import Link from './Link';
 const style = {
   card: {
     marginBottom: '1em',
-    // width: '49%',
   },
   actions: {
     textAlign: 'right',
@@ -42,7 +41,7 @@ const TitleLink = styled.a`
 `;
 
 const Item = (props) => (
-  <Card style={style.card}>
+  <Card className="articleCard" style={style.card}>
     <CardHeader
       title={<TitleLink href={props.resolved_url}>{props.given_title}</TitleLink>}
       showExpandableButton={false}
