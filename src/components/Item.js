@@ -11,7 +11,7 @@ import Link from './Link';
 const style = {
   card: {
     marginBottom: '1em',
-    width: '49%',
+    // width: '49%',
   },
   actions: {
     textAlign: 'right',
@@ -41,7 +41,6 @@ const TitleLink = styled.a`
   color: inherit;
 `;
 
-
 const Item = (props) => (
   <Card style={style.card}>
     <CardHeader
@@ -66,8 +65,7 @@ const Item = (props) => (
         <span>{props.time_read}</span>
         <ul>
           {
-            props.authors &&
-            Object.values(props.authors).map(i => (
+            props.authors && Object.values(props.authors).map(i => (
               <li key={ i.author_id } >{
                 i.url ?
                   <Link href={i.url}>{i.name}</Link> :
