@@ -13,8 +13,8 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
 
-let allItems = null;
 
+const PAGE_SIZE = 6;
 
 class App extends Component {
 
@@ -22,34 +22,56 @@ class App extends Component {
     super(props);
     this.state = {
       items: [],
+      allItems: null,
+      pageSize: PAGE_SIZE,
       filters: [],
+      isLoading: true,
     };
     this.resetFilter = this.resetFilter.bind(this);
     this.filterByTag = this.filterByTag.bind(this);
+    this.loadMore = this.loadMore.bind(this);
+
   }
 
-  componentWillMount() {
-    if (! allItems) {
+  componentDidMount() {
+    window.addEventListener('scroll', () => {
+      const docEl = document.documentElement;
+      if ( (window.innerHeight + docEl.scrollTop) >= docEl.offsetHeight )  {
+        this.loadMore();
+      }
+    });
+
+    if (! this.state.allItems) {
       fetch('/items.json')
       .then(data => (
         data.json()
       ))
       .then(items => {
-        allItems = items;
-        this.setState({items});
+        this.setState({
+          isLoading: false,
+          allItems: items,
+        });
+        this.loadMore();
       });
     }
   }
 
+  loadMore(start = 0) {
+    const currentSize = this.state.pageSize;
+    let items = this.state.allItems || [];
+    items = items.slice(this.state.paginationStart, currentSize);
+    this.setState({pageSize: (currentSize + PAGE_SIZE), items});
+  }
+
   resetFilter () {
     this.setState({
-      items: allItems,
+      items: this.loadMore(),
       filters: [],
     });
   }
 
   filterByTag (tag) {
-    const items = allItems.filter(i => (i.tags && i.tags[tag]));
+    const items = this.state.allItems.filter(i => (i.tags && i.tags[tag]));
     this.setState({items, filters: [ tag, ]});
   }
 
@@ -70,6 +92,7 @@ class App extends Component {
               filters={this.state.filters} />
 
             <ItemsContainer
+              isLoading={this.state.isLoading}
               items={items}
               filterByTag={this.filterByTag} />
           </Main>

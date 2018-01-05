@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import { Card, CardActions, CardMedia, CardHeader, CardText } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 import ChevronRightIcon from 'material-ui/svg-icons/navigation/chevron-right';
 import Tags from './Tags';
@@ -18,29 +18,55 @@ const style = {
   }
 };
 
-const Image = styled.img`
-  max-width: 150px;
-  float: left;
-  margin-right: 3px;
+
+// @media screen and (${config.mediumDevices}) {
+//   max-width: 60%;
+//   margin: 0 auto;
+// }
+
+const ImageWrapper = styled.div`
+  max-height: 250px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100%;
+  }
+`;
+
+const TitleLink = styled.a`
+  text-decoration: none;
+  color: inherit;
 `;
 
 
 const Item = (props) => (
   <Card style={style.card}>
-    <CardTitle
-      title={props.given_title}
+    <CardHeader
+      title={<TitleLink href={props.resolved_url}>{props.given_title}</TitleLink>}
+      showExpandableButton={false}
       subtitle={ props.tags && <Tags {...props} /> } />
 
+    { props.has_image === '1' &&
+      <CardMedia>
+        <ImageWrapper>
+          <img src={props.image.src} alt={props.given_title} />
+        </ImageWrapper>
+      </CardMedia>
+    }
     <CardText>
       <div>
-        { props.has_image === '1' && <Image src={props.image.src} /> }
-        <Divider />
         <span>{props.excerpt}</span>{ ' ' }
+
+        <Divider />
         <span>{props.word_count}</span>{ ' ' }
         <span>{props.time_added}</span>{ ' ' }
         <span>{props.time_read}</span>
         <ul>
           {
+            props.authors &&
             Object.values(props.authors).map(i => (
               <li key={ i.author_id } >{
                 i.url ?
@@ -56,7 +82,7 @@ const Item = (props) => (
     </CardText>
 
     <CardActions style={style.actions}>
-      <FlatButton
+      <RaisedButton
         label="Open"
         labelPosition="before"
         primary={true}
