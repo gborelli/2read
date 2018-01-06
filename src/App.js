@@ -1,5 +1,6 @@
 import 'whatwg-fetch';
 import 'typeface-roboto';
+import "babel-polyfill";
 
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
@@ -13,6 +14,8 @@ import Main from './components/Main';
 import SearchBar from './components/SearchBar';
 
 
+// npm install babel-polyfill
+
 let ALLITEMS = null;
 
 class App extends Component {
@@ -23,7 +26,7 @@ class App extends Component {
       filters: [],
       isLoading: true,
 
-      allItems: null,
+      filteredItems: null,
       items: [],
 
       pageSize: 6,
@@ -41,7 +44,7 @@ class App extends Component {
       const docEl = document.documentElement;
       if ( (window.innerHeight + docEl.scrollTop) >= docEl.offsetHeight )  {
         this.setState({
-          items: this.getLoadedItems(this.state.allItems),
+          items: this.getLoadedItems(this.state.filteredItems),
         });
       }
     });
@@ -55,40 +58,40 @@ class App extends Component {
         ALLITEMS = items;
         this.setState({
           isLoading: false,
-          allItems: items,
+          filteredItems: items,
           items: this.getLoadedItems(items, 0),
         });
       });
     }
   }
 
-  getLoadedItems(allItems, forcedStart) {
+  getLoadedItems(filteredItems, forcedStart) {
     const { items, pageSize, pageStart } = this.state;
     let start = (typeof forcedStart !== 'undefined') ? forcedStart : items.length;
     // take a list of items from 0 to items.length + pagesize
-    return allItems.slice(pageStart, (start + pageSize) );
+    return filteredItems.slice(pageStart, (start + pageSize) );
   }
 
   resetFilter () {
     this.setState({
-      allItems: ALLITEMS,
+      filteredItems: ALLITEMS,
       items: this.getLoadedItems(ALLITEMS, 0),
       filters: [],
     });
   }
 
   filterByTag (tag) {
-    const allItems = ALLITEMS.filter(i => (i.tags && i.tags[tag]));
+    const filteredItems = ALLITEMS.filter(i => (i.tags && i.tags[tag]));
     this.setState({
-      allItems,
+      filteredItems,
       filters: [ tag, ],
-      items: this.getLoadedItems(allItems, 0),
+      items: this.getLoadedItems(filteredItems, 0),
     });
 
   }
 
   render() {
-    const { items, allItems, pageSize } = this.state;
+    const { items, filteredItems, pageSize } = this.state;
 
     return (
       <div>
@@ -99,7 +102,7 @@ class App extends Component {
 
         <Header
           title={config.title}
-          itemsLength={allItems && allItems.length}
+          itemsLength={filteredItems && filteredItems.length}
           pageSize={pageSize} />
 
         <AppWrapper>
