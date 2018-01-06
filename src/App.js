@@ -14,8 +14,6 @@ import Main from './components/Main';
 import SearchBar from './components/SearchBar';
 
 
-// npm install babel-polyfill
-
 let ALLITEMS = null;
 
 class App extends Component {
