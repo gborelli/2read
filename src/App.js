@@ -24,7 +24,7 @@ class App extends Component {
       filters: [],
       isLoading: true,
 
-      filteredItems: null,
+      filteredItems: [],
       items: [],
 
       pageSize: 6,
