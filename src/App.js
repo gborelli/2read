@@ -92,7 +92,7 @@ class App extends Component {
     const { items, filteredItems, pageSize } = this.state;
 
     return (
-      <div>
+      <AppWrapper>
         <Reboot />
         <Helmet>
           <title>{config.title}</title>
@@ -103,18 +103,18 @@ class App extends Component {
           itemsLength={filteredItems && filteredItems.length}
           pageSize={pageSize} />
 
-        <AppWrapper>
-          <Main>
-            <SearchBar
-              resetFilter={this.resetFilter} 
-              filters={this.state.filters} />
-            <ItemsContainer
-              isLoading={this.state.isLoading}
-              items={items}
-              filterByTag={this.filterByTag} />
-          </Main>
-        </AppWrapper>
-      </div>
+
+        <Main>
+          <SearchBar
+            resetFilter={this.resetFilter} 
+            filters={this.state.filters} />
+          <ItemsContainer
+            isLoading={this.state.isLoading}
+            items={items}
+            filterByTag={this.filterByTag} />
+        </Main>
+      </AppWrapper>
+
     );
   }
 }
