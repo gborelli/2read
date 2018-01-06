@@ -3,6 +3,7 @@ import config from '../config';
 
 const AppWrapper = styled.div`
   font-family: Roboto, sans-serif;
+  margin-top: 4em;
   z-index: 2;
   .articleCard {
     margin-bottom: ${config.defaultPadding};

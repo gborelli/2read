@@ -3,7 +3,7 @@ import config from '../config';
 
 
 const Main = styled.main`
-  padding: 5em ${config.defaultPadding} ${config.defaultPadding};
+  padding: ${config.defaultPadding};
 `;
 
 export default Main;
