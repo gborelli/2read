@@ -40,7 +40,9 @@ class App extends Component {
   componentDidMount() {
     window.addEventListener('scroll', () => {
       const docEl = document.documentElement;
-      if ( (window.innerHeight + docEl.scrollTop) >= docEl.offsetHeight )  {
+      // XXX: safari uses body.scrollTop, chrome uses document.scrollTop instead
+      const scrollTop = docEl.scrollTop || document.querySelector('body').scrollTop || 0;
+      if ( (window.innerHeight + scrollTop) >= docEl.offsetHeight )  {
         this.setState({
           items: this.getLoadedItems(this.state.filteredItems),
         });

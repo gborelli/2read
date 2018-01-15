@@ -10,6 +10,14 @@ import Tags from './Tags';
 import Link from './Link';
 
 
+const formatDate = (timestamp) => {
+  const dateObj = new Date(timestamp * 1000);
+  if (dateObj.getFullYear() > 1970) {
+    return dateObj.toLocaleString();
+  }
+  return '';
+};
+
 const styles = theme => ({
   actions: {
     marginTop: theme.spacing.unit,
@@ -62,8 +70,8 @@ const Item = (props) => (
 
         <Divider />
         <span>{props.word_count}</span>{ ' ' }
-        <span>{props.time_added}</span>{ ' ' }
-        <span>{props.time_read}</span>
+        <span>{formatDate(props.time_added)}</span>{ ' ' }
+        <span>{formatDate(props.time_read)}</span>
         <ul>
           {
             props.authors && Object.values(props.authors).map(i => (
