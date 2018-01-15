@@ -34,7 +34,7 @@ class App extends Component {
     this.resetFilter = this.resetFilter.bind(this);
     this.filterByTag = this.filterByTag.bind(this);
     this.getLoadedItems = this.getLoadedItems.bind(this);
-
+    this.filterItems = this.filterItems.bind(this);
   }
 
   componentDidMount() {
@@ -73,20 +73,47 @@ class App extends Component {
     return filteredItems.slice(pageStart, (start + pageSize) );
   }
 
-  resetFilter () {
+  filterItems (filters) {
+    if (! filters.length) {
+      return ALLITEMS;
+    }
+
+    return ALLITEMS.filter(i => {
+      // Return the element that contains all tags in filters
+      if (! i.tags) {
+        return false;
+      }
+      let check = true;
+      filters.forEach(f => {
+        if (! i.tags[f]) {
+          check = false;
+        }
+      });
+      return check;
+    });
+  }
+
+  resetFilter (tag) {
+    let { filters } = this.state;
+    filters = filters.filter(i => i !== tag);
+    const filteredItems = this.filterItems(filters);
     this.setState({
-      filteredItems: ALLITEMS,
-      items: this.getLoadedItems(ALLITEMS, 0),
-      filters: [],
+      items: this.getLoadedItems(filteredItems, 0),
+      filteredItems,
+      filters,
     });
   }
 
   filterByTag (tag) {
-    const filteredItems = ALLITEMS.filter(i => (i.tags && i.tags[tag]));
+    let { filters } = this.state;
+    if ( filters.indexOf(tag) === -1 ) {
+      filters.push(tag);
+    }
+    const filteredItems = this.filterItems(filters);
     this.setState({
-      filteredItems,
-      filters: [ tag, ],
       items: this.getLoadedItems(filteredItems, 0),
+      filteredItems,
+      filters,
     });
 
   }
@@ -114,6 +141,7 @@ class App extends Component {
           <ItemsContainer
             isLoading={this.state.isLoading}
             items={items}
+            filters={this.state.filters}
             filterByTag={this.filterByTag} />
         </Main>
       </AppWrapper>
