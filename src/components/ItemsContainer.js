@@ -21,6 +21,7 @@ const ItemsContainer = (props) => {
       {props.items.map(i => (
         <Item
           key={sha1(i)}
+          filters={props.filters}
           filterByTag={props.filterByTag}
           {...i}
         />

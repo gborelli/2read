@@ -26,7 +26,7 @@ const SearchBar = (props) => (
         className={props.classes.chip}
         key={i}
         label={i}
-        onDelete={ (i) => {props.resetFilter(i)} } />
+        onDelete={ () => {props.resetFilter(i)} } />
     ))}
   </Typography>
 );

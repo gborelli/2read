@@ -15,18 +15,26 @@ export const Tag = props => (
 );
 
 
-const TagContainer = props => (
-  <div>
+const getTagList = (tags, filters) => (
+  Object.keys(tags).filter(
+    el => filters.indexOf(el) === -1
+  )
+);
+
+
+const TagContainer = props => {
+  const { tags, filters, filterByTag } = props;
+  return <div>
     <TagWrapper>
       {
-        Object.keys(props.tags).map(k => {
-          const el = props.tags[k];
-          return <Tag key={k} text={el.tag} onClick={ () => {props.filterByTag(k)} }/>
+        getTagList(tags, filters).map(k => {
+          const el = tags[k];
+          return <Tag key={k} text={el.tag} onClick={ () => {filterByTag(k)} }/>
         })
       }
     </TagWrapper>
   </div>
-);
+};
 
 
 export default TagContainer;

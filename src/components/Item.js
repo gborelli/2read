@@ -21,32 +21,16 @@ const formatDate = (timestamp) => {
 const styles = theme => ({
   actions: {
     marginTop: theme.spacing.unit,
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
   },
   cardMedia: {
     height: '250px',
   },
+  button: {
+    position: 'absolute',
+    bottom: theme.spacing.unit,
+  }
 });
 
-
-// @media screen and (${config.mediumDevices}) {
-//   max-width: 60%;
-//   margin: 0 auto;
-// }
-
-// const ImageWrapper = styled.div`
-
-//   width: 100%;
-//   overflow: hidden;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   img {
-//     width: 100%;
-//   }
-// `;
 
 const Authors = (props) => (
   <ul>
@@ -78,6 +62,7 @@ const TitleLink = styled.a`
   color: inherit;
 `;
 
+
 const Item = (props) => (
   <Card className="articleCard">
     <CardHeader
@@ -108,6 +93,7 @@ const Item = (props) => (
       <Button
         dense
         color="primary"
+        className={props.classes.button}
         href={props.resolved_url}>Open
         { <ChevronRight /> }
       </Button>
@@ -118,5 +104,3 @@ const Item = (props) => (
 
 
 export default withStyles(styles)(Item);
-
-
