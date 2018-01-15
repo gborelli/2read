@@ -40,7 +40,9 @@ class App extends Component {
   componentDidMount() {
     window.addEventListener('scroll', () => {
       const docEl = document.documentElement;
-      if ( (window.innerHeight + docEl.scrollTop) >= docEl.offsetHeight )  {
+      // XXX: safari uses body.scrollTop, chrome uses document.scrollTop instead
+      const scrollTop = docEl.scrollTop || document.querySelector('body').scrollTop || 0;
+      if ( (window.innerHeight + scrollTop) >= docEl.offsetHeight )  {
         this.setState({
           items: this.getLoadedItems(this.state.filteredItems),
         });
@@ -53,11 +55,12 @@ class App extends Component {
         data.json()
       ))
       .then(items => {
-        ALLITEMS = items;
+
+        ALLITEMS = items.sort((a, b) => (b.time_added - a.time_added) );
         this.setState({
           isLoading: false,
-          filteredItems: items,
-          items: this.getLoadedItems(items, 0),
+          filteredItems: ALLITEMS,
+          items: this.getLoadedItems(ALLITEMS, 0),
         });
       });
     }

@@ -10,6 +10,14 @@ import Tags from './Tags';
 import Link from './Link';
 
 
+const formatDate = (timestamp) => {
+  const dateObj = new Date(timestamp * 1000);
+  if (dateObj.getFullYear() > 1970) {
+    return dateObj.toLocaleDateString();
+  }
+  return '';
+};
+
 const styles = theme => ({
   actions: {
     marginTop: theme.spacing.unit,
@@ -40,6 +48,31 @@ const styles = theme => ({
 //   }
 // `;
 
+const Authors = (props) => (
+  <ul>
+    {
+      props.authors && Object.values(props.authors).map(i => (
+        <li key={ i.author_id } >{
+          i.url ?
+            <Link href={i.url}>{i.name}</Link> :
+            <span>{i.name}</span>
+          }
+        </li>
+      ))
+    }
+  </ul>    
+);
+
+
+const Metadata = styled.ul`
+  list-style-type: none;
+  padding-left: 0;
+  ul {
+    list-style-type: none;
+    madding-left: 1em;
+  }
+`;
+
 const TitleLink = styled.a`
   text-decoration: none;
   color: inherit;
@@ -48,7 +81,7 @@ const TitleLink = styled.a`
 const Item = (props) => (
   <Card className="articleCard">
     <CardHeader
-      title={<TitleLink href={props.resolved_url}>{props.given_title}</TitleLink>}
+      title={<TitleLink href={props.resolved_url}>{props.given_title || props.resolved_title}</TitleLink>}
       subheader={ props.tags && <Tags {...props} /> } />
 
     { props.has_image === '1' &&
@@ -61,28 +94,19 @@ const Item = (props) => (
         <span>{props.excerpt}</span>{ ' ' }
 
         <Divider />
-        <span>{props.word_count}</span>{ ' ' }
-        <span>{props.time_added}</span>{ ' ' }
-        <span>{props.time_read}</span>
-        <ul>
-          {
-            props.authors && Object.values(props.authors).map(i => (
-              <li key={ i.author_id } >{
-                i.url ?
-                  <Link href={i.url}>{i.name}</Link> :
-                  <span>{i.name}</span>
-                }
-              </li>
-            ))
-          }
-        </ul>
+        <Metadata>
+          <li><strong>Added:</strong> {formatDate(props.time_added)}</li>
+          <li><strong>Words count:</strong> {props.word_count}</li>
+          { props.authors && <li><strong>Authors:</strong> <Authors authors={props.authors} /></li> }
+        </Metadata>
+
       </Typography>
 
     </CardContent>
 
     <CardActions className={props.classes.actions}>
       <Button
-        raised
+        dense
         color="primary"
         href={props.resolved_url}>Open
         { <ChevronRight /> }
