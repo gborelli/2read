@@ -55,11 +55,12 @@ class App extends Component {
         data.json()
       ))
       .then(items => {
-        ALLITEMS = items;
+
+        ALLITEMS = items.sort((a, b) => (b.time_added - a.time_added) );
         this.setState({
           isLoading: false,
-          filteredItems: items,
-          items: this.getLoadedItems(items, 0),
+          filteredItems: ALLITEMS,
+          items: this.getLoadedItems(ALLITEMS, 0),
         });
       });
     }
